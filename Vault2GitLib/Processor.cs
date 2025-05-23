@@ -502,9 +502,12 @@ namespace Vault2Git.Lib
         private string buildCommitMessage(string repoPath, long version, VaultVersionInfo info)
         {
             //parse path repo$RepoPath@version/trx
-            var r = new StringBuilder(info.Comment);
+            var r = new StringBuilder();
+            r.AppendLine(info.Comment);
             r.AppendLine();
-            r.AppendFormat("{4} {0}{1}@{2}/{3}", this.VaultRepository, repoPath, version, info.TrxId, VaultTag);
+            if (!string.IsNullOrEmpty(VaultTag)) r.AppendLine(VaultTag);
+            r.AppendLine($"{this.VaultRepository} {repoPath}@{version}");
+            r.AppendLine($"Transaction ID: {info.TrxId}");
             r.AppendLine();
             return r.ToString();
         }
