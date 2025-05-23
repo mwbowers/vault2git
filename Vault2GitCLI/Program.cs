@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Windows.Forms;
 using Vault2Git.Lib;
 
 namespace Vault2Git.CLI
